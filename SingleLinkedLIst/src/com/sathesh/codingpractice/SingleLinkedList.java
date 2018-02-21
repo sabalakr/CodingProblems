@@ -20,15 +20,26 @@ public class SingleLinkedList
 		head=newNode;
 	}
 	
-	public void insertLast(int data)
+	
+	public void deleteFirst()
 	{
+		Node tempNode=new Node();
+		tempNode=head;
+		head=head.next;
+		tempNode=null;
+	}
+	
+	public void deleteLast()
+	{
+		
 		Node current = head;
-		while(current.next!=null)
-		{
+		Node previous =new Node();
+		while(current!=null && current.next.next!=null)
+		{		
 			current=current.next;
 		}
 		Node newNode=new Node();
-		newNode.data=data;
+
 		current.next=newNode;
 	}
 	
@@ -42,6 +53,18 @@ public class SingleLinkedList
 		Node newNode=new Node();
 		newNode.data=data;
 		newNode.next=current.next;
+		current.next=newNode;
+	}
+	
+	public void insertLast(int data)
+	{
+		Node current = head;
+		while(current.next!=null)
+		{
+			current=current.next;
+		}
+		Node newNode=new Node();
+		newNode.data=data;
 		current.next=newNode;
 	}
 	
@@ -63,6 +86,7 @@ public class SingleLinkedList
 	   myLinkedlist.insertFirst(7);
 	   myLinkedlist.insertFirst(1);
 	   myLinkedlist.insertLast(2);
+	   myLinkedlist.deleteFirst();
 	   myLinkedlist.print();
 	 }
 }
